@@ -36,7 +36,7 @@ app.get("/calculate-return-percentage", (req, res) => {
   let boughtAt = parseFloat(req.query.boughtAt);
   let returns = parseFloat(req.query.returns);
 
-  let returnPercentage = ((returns - boughtAt) / boughtAt) * 100;
+  let returnPercentage = ((boughtAt - returns) / boughtAt) * 100;
   res.send(returnPercentage.toString());
 });
 
@@ -56,17 +56,16 @@ app.get("/status", (req, res) => {
   let returnPercentage = req.query.returnPercentage;
   let status = "";
 
-  if(returnPercentage > 0){
+  if (returnPercentage > 0) {
     status = "profit";
-  } else if (returnPercentage < 0){
-    status = "loss"
+  } else if (returnPercentage < 0) {
+    status = "loss";
   } else {
     status = "niether profit nor loss";
   }
 
   res.send(status);
-  
-})
+});
 app.listen(port, () => {
   console.log("Server is listening on Port http://localhost:", port);
 });
