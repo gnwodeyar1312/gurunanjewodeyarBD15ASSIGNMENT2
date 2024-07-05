@@ -36,7 +36,7 @@ app.get("/calculate-return-percentage", (req, res) => {
   let boughtAt = parseFloat(req.query.boughtAt);
   let returns = parseFloat(req.query.returns);
 
-  let returnPercentage = ((boughtAt - returns) / boughtAt) * 100;
+  let returnPercentage = (returns / boughtAt) * 100;
   res.send(returnPercentage.toString());
 });
 
